@@ -1,6 +1,13 @@
 #!/usr/bin/env node
-// duster.js 
-// Node script to watch & precompile directory of dust.js templates
+
+/* duster.js (dillongrove fork)
+ * A node script to watch & precompile directory of dust.js templates
+ *
+ * original author: Dan McGrady (dmix) (https://github.com/dmix)
+ * fork by: Dillon Grove (dillongrove) (https://github.com/dillongrove)
+ *
+ * repo: https://github.com/dillongrove/dusterjs
+ */
 
 var fs = require('fs'),
     path = require('path'),
