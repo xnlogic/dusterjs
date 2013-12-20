@@ -76,6 +76,11 @@ Watches each of the directories in **inputs** recursively for changes. If any fi
         console.log("Templates updated at", new Date().toLocaleTimeString());
     });
 
+## TODO
+
+ * It would be more efficient when using --watch and --no-concat to only compile the one file that has changed (currently, it recompiles them all).
+ * It would also be more efficient to do this in general with --no-concat, by looking at timestamps.
+
 ##  More information
 
 Linkedin wrote a dust.js tutorial: https://github.com/linkedin/dustjs/wiki/Dust-Tutorial
