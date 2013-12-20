@@ -1,7 +1,7 @@
 {
   "name": "dusterjs",
   "preferGlobal": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Dan McGrady <dan@dmix.ca>",
   "description": "A tool to watch & compile a directory of dust.js templates",
   "contributors": [
@@ -14,10 +14,10 @@
     }
   ],
   "bin": {
-    "duster": "./bin/duster"
+    "duster": "./bin/cli.js"
   },
   "scripts": {},
-  "main": "./lib/duster",
+  "main": "./lib/duster.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/lee-houghton/dusterjs.git"
