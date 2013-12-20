@@ -12,8 +12,7 @@ So I wrote a script to pre-compile dust.js files whenever they are modified in a
 
 ## Install
 
-    git clone https://github.com/lee-houghton/dusterjs.git # (until an NPM package is released)
-    npm install -g 
+    npm install -g dusterjs
 
 ## Usage
 
