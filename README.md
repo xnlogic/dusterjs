@@ -11,40 +11,74 @@ For my backbone.js app, the only option was to include the dust-full.js file and
 So I wrote a script to pre-compile dust.js files whenever they are modified in a folder.
 
 ## Install
-Download duster.js to your project root folder and install dependencies:
 
-    npm install dustjs-linkedin
-    npm install watch
+    git clone https://github.com/lee-houghton/dusterjs.git # (until an NPM package is released)
+    npm install -g 
 
 ## Usage
-Create dust.js templates in ./src/dusts/ with the file extension .dust and create ./public/dusts directory where files will be compiled to, then run watcher script:
 
-    $ node duster.js
+The most simple usage: compile a bunch of templates (the *views* directory) into a single JS file (*templates.js*). Only files with the *.dust* extension will be compiled.
 
-You can modify folder paths in the duster.js file
+    $ duster views templates.js
 
-## Example:
-    ./src/dusts/tweet.dust
-    ./src/dusts/user.dust
+To watch the input directories for changes and recompile, use the **--watch** (-w) option: 
 
-Compiles to:
+    $ duster -w views templates.js
 
-    ./public/dusts/tweet.js
-    ./public/dusts/user.js
+To generate one .js file per dust template, use the **--no-concat** option (for example, *views/home.dust* would become *views-js/home.js* and *views/shared/nav.dust* would become *views-js/shared/nav.js*):
 
-Then you include them in the html:
+    $ duster --no-concat views views-js
 
-    <script src="dust-core-1.0.0.min.js"></script>
-    <script src="tweet.js"></script>
-    <script src="user.js"></script>
+A complete list of options:
 
-I then concatenate all the JS files before production deployment (using something like Jammit).
+      --verbose, -v   verbose mode
+      --watch, -w     watch input directory(s) for changes
+      --concat, -c    concatenate all compiled templates into one javascript file (turn off with --no-concat)  [string]  [default: true]
+      --minify, -m    minify all the compiled templates (turn off with --no-minify)                            [default: true]
+      --interval, -i  set the polling interval (in milliseconds)                                               [default: 100]
+      --help          show usage information and exit
+      --version       show program version and exit
+
+##  As a libary
+
+Duster.js is now also available as a library.
+
+### duster.compileFile (fileName, callback)
+
+Passes to ```callback``` the JavaScript resulting from compiling the dust template.
+
+### duster.compileFileSync (fileName)
+
+Returns the JavaScript resulting from compiling the dust template.
+
+### duster.minify (js)
+
+Returns a minified version of ```js``` (a piece of JavaScript code). Uses ```uglifyjs```.
+
+### duster.compileAll (inputs, output, options) 
+
+Compiles all *.dust* templates in the array of directory names **inputs**, and writes them to **output** (which is either a file name or directory name, depending on whether or not ```options.concat``` is truthy). If ```options.minify``` is truthy, the javascript will be compressed. If ```options.concat``` is truthy, the javascript will all be written to one file (specified by **output**), otherwise each *.dust* template will get its own *.js* file in the directory specified by **output**.
+
+If an error occurs, an *array of strings* is thrown. If no errors occur, an object is returned with the following properties:
+
+    {
+        bytesRead: 54983, // The total number of JavaScript bytes produced by compiling the dust templates
+        bytesWritten: 46563 // The total number of JavaScript bytes after compressing
+    }
+
+### duster.watch (inputs, output, [options], [callback]) 
+
+Watches each of the directories in **inputs** recursively for changes. If any files or directories are added, changed or removed, the output is recompiled. ```options``` is passed to ```compileAll```. ```callback``` should be a function taking two arguments; the first argument is the error (if an error occurred), the second argument is the result of compileAll.
+
+    duster.watch(["views", "../views"], "js/templates.js", {}, function (err, results) {
+        if (err) 
+            return console.error("** Error:", err);
+        console.log("Templates updated at", new Date().toLocaleTimeString());
+    });
 
 ##  More information
 
-@ericktai wrote an example app/tutorial on how to use dust.js client-side using duster.js: https://github.com/ericktai/dust-js-browser
-
-Linkedin also wrote a dust.js tutorial: https://github.com/linkedin/dustjs/wiki/Dust-Tutorial
+Linkedin wrote a dust.js tutorial: https://github.com/linkedin/dustjs/wiki/Dust-Tutorial
 
 ---
 by Dan McGrady http://dmix.ca
