@@ -20,6 +20,7 @@ var opts = require('optimist')
 	.alias('concat', 'c').boolean('concat').default('concat', true).describe('concat', 'concatenate all compiled templates into one javascript file (turn off with --no-concat)')
 	.alias('minify', 'm').boolean('minify').default('minify', true).describe('minify', 'minify all the compiled templates (turn off with --no-minify)')
 	.alias('interval', 'i').default('interval', 100).describe('interval', 'set the polling interval (in milliseconds)')
+        .alias('include-js', 'j').boolean('include-js').default('include-js', true).describe('include-js', 'include .js files in the output in addition to .dust files')
 	.describe('help', 'show usage information and exit')
 	.describe('version', 'show program version and exit')
 	.check(function(argv) {

@@ -1,7 +1,7 @@
 {
   "name": "dusterjs",
   "preferGlobal": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Dan McGrady <dan@dmix.ca>",
   "description": "A tool to watch & compile a directory of dust.js templates",
   "contributors": [
