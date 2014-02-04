@@ -1,7 +1,7 @@
 {
   "name": "dusterjs",
   "preferGlobal": true,
-  "version": "0.1.5",
+  "version": "0.2.1",
   "author": "Dan McGrady <dan@dmix.ca>",
   "description": "A tool to watch & compile a directory of dust.js templates",
   "contributors": [
@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "watch": "~0.8.0",
-    "dustjs-linkedin": "~2.2.2",
+    "dustjs-linkedin": "~2.3.2",
     "optimist": "~0.6.0",
     "colors": "~0.6.2",
     "diveSync": "~0.2.0",
