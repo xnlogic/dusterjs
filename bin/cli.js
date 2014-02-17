@@ -13,14 +13,13 @@ var opts = require('optimist')
 	       colors.bold('Usage:') + ' $0 [options] input [input...] output\n' + 
 		   '\n' +
 		   'Multiple ' + colors.bold('input') + 's may be specified, and each input may be either a directory or a file.\n' +
-		   'If --concat is specified, then ' + colors.bold('output') + ' will be treated as a file, otherwise it will be treated as a directory.'
-		   )
+		   'If --concat is specified, then ' + colors.bold('output') + ' will be treated as a file, otherwise it will be treated as a directory.')
 	.alias('verbose', 'v').boolean('verbose').describe('verbose', 'verbose mode')
 	.alias('watch', 'w').boolean('watch').describe('watch', 'watch input directory(s) for changes')
 	.alias('concat', 'c').boolean('concat').default('concat', true).describe('concat', 'concatenate all compiled templates into one javascript file (turn off with --no-concat)')
 	.alias('minify', 'm').boolean('minify').default('minify', true).describe('minify', 'minify all the compiled templates (turn off with --no-minify)')
 	.alias('interval', 'i').default('interval', 100).describe('interval', 'set the polling interval (in milliseconds)')
-        .alias('include-js', 'j').boolean('include-js').default('include-js', true).describe('include-js', 'include .js files in the output in addition to .dust files')
+    .alias('include-js', 'j').boolean('include-js').default('include-js', true).describe('include-js', 'include .js files in the output in addition to .dust files')
 	.describe('help', 'show usage information and exit')
 	.describe('version', 'show program version and exit')
 	.check(function(argv) {
