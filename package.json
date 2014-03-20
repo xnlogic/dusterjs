@@ -1,10 +1,14 @@
 {
   "name": "dusterjs",
   "preferGlobal": true,
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Lee Houghton <lee+dusterjs@theconnectgroup.net>",
-  "description": "A tool to watch & compile a directory of dust.js templates",
+  "description": "A tool to watch and compile a directory of dust.js templates",
   "contributors": [
+    {
+      "name": "Dan McGrady",
+      "email": "dan@dmix.ca"
+    },
     {
       "name": "Dillon Grove"
     },
