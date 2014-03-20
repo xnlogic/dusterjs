@@ -1,8 +1,8 @@
 {
   "name": "dusterjs",
   "preferGlobal": true,
-  "version": "0.2.4",
-  "author": "Dan McGrady <dan@dmix.ca>",
+  "version": "0.3.1",
+  "author": "Lee Houghton <lee+dusterjs@theconnectgroup.net>",
   "description": "A tool to watch & compile a directory of dust.js templates",
   "contributors": [
     {
