@@ -38,7 +38,7 @@ A complete list of options:
       --help          show usage information and exit
       --version       show program version and exit
 
-##  As a libary
+##  As a library
 
 Duster.js is now also available as a library.
 
