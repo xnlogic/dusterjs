@@ -9,8 +9,8 @@ var colors = require('colors')
 var duster = require('../lib/duster')
 
 var opts = require('optimist')
-	.usage('Watches a directory tree and compiles templates when changed.\n' + 
-	       colors.bold('Usage:') + ' $0 [options] input [input...] output\n' + 
+	.usage('Watches a directory tree and compiles templates when changed.\n' +
+	       colors.bold('Usage:') + ' $0 [options] input [input...] output\n' +
 		   '\n' +
 		   'Multiple ' + colors.bold('input') + 's may be specified, and each input may be either a directory or a file.\n' +
 		   'If --concat is specified, then ' + colors.bold('output') + ' will be treated as a file, otherwise it will be treated as a directory.')
@@ -108,7 +108,7 @@ if (argv.watch) {
 				info = " " + Math.round(results.bytesWritten/10.24)/100 + '/' + Math.round(results.bytesRead/10.24)/100 + 'KB (' + pct + '%)'
 			}
 			console.error(
-				colors.yellow(colors.bold("Changes compiled")), 
+				colors.yellow(colors.bold("Changes compiled")),
 				"(" + new Date().toLocaleTimeString() + ")" + info)
 		}
 	});
