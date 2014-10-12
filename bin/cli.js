@@ -23,16 +23,12 @@ var opts = require('optimist')
 	.describe('help', 'show usage information and exit')
 	.describe('version', 'show program version and exit')
 	.check(function(argv) {
-		try {
 			if (argv.interval <= 0)
 				throw "The polling interval must be greater than zero";
 			if (argv._.length == 0)
 				throw "No input or output files/directories specified";
 			if (argv._.length == 1)
 				throw "Both an input and output must be specified (inputs first, then outputs)"
-		} catch (e) {
-			throw colors.bold(colors.red("Error: ")) + e
-		}
 	})
 
 var argv = opts.argv;
@@ -46,7 +42,6 @@ if (argv.version) {
 if (argv.help || argv._.length < 2)
 	return opts.showHelp();
 
-try {
 	var outputPath = argv._[argv._.length - 1];
 	var inputPaths = argv._.slice(0, argv._.length - 1);
 
@@ -82,18 +77,8 @@ try {
 		})
 		console.log("Output:", outputPath)
 	}
-} catch (e) {
-	console.error(colors.bold(colors.red("Error:")), e)
-	return;
-}
 
-try {
 	duster.compileAll(inputPaths, outputPath, argv);
-} catch (e) {
-	[].concat(e).forEach(function(msg) {
-		console.error(colors.red(colors.bold("Error:")), msg);
-	})
-}
 
 if (argv.watch) {
 	duster.watch(inputPaths, outputPath, argv, function (err, results) {
